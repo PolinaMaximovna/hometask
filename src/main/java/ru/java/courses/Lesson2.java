@@ -5,8 +5,6 @@ import java.util.stream.Stream;
 
 public class Lesson2 {
 
-    final static int COEFFICIENT = 13;
-    final static String FIO_MASK = "%s.%s.%s";
 
     public static void main(String[] args) {
         System.out.println("Задача 1: " + formula(50));
@@ -22,7 +20,7 @@ public class Lesson2 {
      * хвост отбрасываем без откругления
      */
     static int formula(int x) {
-        return (int) Math.sqrt(COEFFICIENT * x + COEFFICIENT / x);
+        return (int) Math.sqrt(13 * x + 13 / x);
     }
 
     /**
@@ -39,12 +37,13 @@ public class Lesson2 {
      */
     static String initials(String fullName) {
 
-        String[] initArray = fullName.split(" ");
+        final String nameUpper = fullName.toUpperCase();
+        String[] initArray = nameUpper.split(" ");
 
-        final char surname = initArray[0].toUpperCase().charAt(0);
-        final char name = initArray[1].toUpperCase().charAt(0);
-        final char patronymic = initArray[2].toUpperCase().charAt(0);
+        final char surname = initArray[0].charAt(0);
+        final char name = initArray[1].charAt(0);
+        final char patronymic = initArray[2].charAt(0);
 
-        return String.format(FIO_MASK, surname, name, patronymic);
+        return  surname + "." + name + "." + patronymic + ".";
     }
 }
